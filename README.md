@@ -36,8 +36,10 @@
   - 로그인한 사용자는 권한에 관계 없이 댓글을 작성할 수 있다. 
   - 사용자는 댓글 내용(텍스트)를 작성할 수 있다. 
 ## ERD 
+![project-board-erd drawio](https://github.com/ddaalll/project_board/assets/115088160/677810fa-3cb6-4f45-9e20-eac375abe8cb)
 
 ## Trouble Shooting
+
 
 ### Tech Stack
 
