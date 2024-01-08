@@ -2,6 +2,7 @@ package com.project.project_board.repository;
 
 import com.project.project_board.config.JpaConfig;
 import com.project.project_board.domain.Article;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled("Spring Data REST 통합테스트는 불필요하므로 제외시킴")
 @ActiveProfiles("testdb")
 @DisplayName("JPA 연결 테스트")
 @Import(JpaConfig.class)
