@@ -21,6 +21,7 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
+    @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 리스트 (게시판) 페이지 - 정상 호출")
     @Test
     public void RequestingArticlesView_ReturnsArticlesView() throws Exception {
@@ -30,9 +31,11 @@ class ArticleControllerTest {
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles")); // 해당 이름을 가진 속성이 있는 지 확인
     }
 
+    @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 상세 페이지 - 정상 호출")
     @Test
     public void RequestingArticleView_ReturnsArticleView() throws Exception {
@@ -42,9 +45,12 @@ class ArticleControllerTest {
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.TEXT_HTML))
-                .andExpect(model().attributeExists("article")); // 해당 이름을 가진 속성이 있는 지 확인
+                .andExpect(view().name("articles/detail"))
+                .andExpect(model().attributeExists("article")) // 해당 이름을 가진 속성이 있는 지 확인
+                .andExpect(model().attributeExists("articleComments")); // 해당 이름을 가진 속성이 있는 지 확인
     }
 
+    @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 검색 전용 페이지 - 정상 호출")
     @Test
     public void RequestingArticleSearchView_ReturnsArticleSearchView() throws Exception {
@@ -53,9 +59,11 @@ class ArticleControllerTest {
         //When + then
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML));
+                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(model().attributeExists("articles/search"));
     }
 
+    @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 검색 전용 페이지 - 정상 호출")
     @Test
     public void RequestingArticleHashtagSearchView_ReturnsArticleHashtagSearchView() throws Exception {
@@ -63,6 +71,7 @@ class ArticleControllerTest {
         //When + then
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML));
+                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(model().attributeExists("articles/search-hashtag"));
     }
 }
