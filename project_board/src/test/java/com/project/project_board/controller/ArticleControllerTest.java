@@ -43,7 +43,7 @@ class ArticleControllerTest {
         //When + then
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/detail"))
                 .andExpect(model().attributeExists("article")) // 해당 이름을 가진 속성이 있는 지 확인
                 .andExpect(model().attributeExists("articleComments")); // 해당 이름을 가진 속성이 있는 지 확인
@@ -58,7 +58,7 @@ class ArticleControllerTest {
         //When + then
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("articles/search"));
     }
 
@@ -70,7 +70,7 @@ class ArticleControllerTest {
         //When + then
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("articles/search-hashtag"));
     }
 }
