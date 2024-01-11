@@ -27,21 +27,21 @@ class ArticleControllerTest {
         //Given
 
         //When + then
-        mvc.perform(get("/articles"))
+        mvc.perform(get("/api/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles")); // 해당 이름을 가진 속성이 있는 지 확인
     }
 
-    @Disabled("구현 중")
+
     @DisplayName("[view][GET] 게시글 상세 페이지 - 정상 호출")
     @Test
     public void RequestingArticleView_ReturnsArticleView() throws Exception {
         //Given
 
         //When + then
-        mvc.perform(get("/articles/1"))
+        mvc.perform(get("/api/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/detail"))
@@ -56,7 +56,7 @@ class ArticleControllerTest {
         //Given
 
         //When + then
-        mvc.perform(get("/articles/search"))
+        mvc.perform(get("/api/articles/search"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("articles/search"));
@@ -68,7 +68,7 @@ class ArticleControllerTest {
     public void RequestingArticleHashtagSearchView_ReturnsArticleHashtagSearchView() throws Exception {
         //Given
         //When + then
-        mvc.perform(get("/articles/search-hashtag"))
+        mvc.perform(get("/api/articles/search-hashtag"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("articles/search-hashtag"));

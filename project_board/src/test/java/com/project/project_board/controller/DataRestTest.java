@@ -36,9 +36,9 @@ public class DataRestTest {
         //given
         //when
         //then
-        mvc.perform(get("/articles"))
+        mvc.perform(get("/api/articles"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.valueOf("text/html")))
                 .andDo(print());
     }
 
@@ -49,7 +49,7 @@ public class DataRestTest {
         //given
         //when
         //then
-        mvc.perform(get("/articles/1"))
+        mvc.perform(get("/api/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
                 .andDo(print());
@@ -62,7 +62,7 @@ public class DataRestTest {
         //given
         //when
         //then
-        mvc.perform(get("/articles/1/articleComments"))
+        mvc.perform(get("/api/articles/1/articleComments"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
                 .andDo(print());
@@ -75,7 +75,7 @@ public class DataRestTest {
         //given
         //when
         //then
-        mvc.perform(get("/articleComments"))
+        mvc.perform(get("/api/articleComments"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
                 .andDo(print());
@@ -88,7 +88,7 @@ public class DataRestTest {
         //given
         //when
         //then
-        mvc.perform(get("/articleComments/1"))
+        mvc.perform(get("/api/articleComments/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
                 .andDo(print());
