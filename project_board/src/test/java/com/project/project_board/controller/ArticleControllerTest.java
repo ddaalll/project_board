@@ -1,10 +1,12 @@
 package com.project.project_board.controller;
 
+import com.project.project_board.config.SecurityConfig;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,6 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("View 컨트롤러 - 게시글")
+@Import(SecurityConfig.class)
 @WebMvcTest(ArticleController.class)
 class ArticleControllerTest {
     private final MockMvc mvc;
@@ -27,7 +30,7 @@ class ArticleControllerTest {
         //Given
 
         //When + then
-        mvc.perform(get("/api/articles"))
+        mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/index"))
@@ -41,7 +44,7 @@ class ArticleControllerTest {
         //Given
 
         //When + then
-        mvc.perform(get("/api/articles/1"))
+        mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/detail"))
@@ -56,7 +59,7 @@ class ArticleControllerTest {
         //Given
 
         //When + then
-        mvc.perform(get("/api/articles/search"))
+        mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("articles/search"));
@@ -68,7 +71,7 @@ class ArticleControllerTest {
     public void RequestingArticleHashtagSearchView_ReturnsArticleHashtagSearchView() throws Exception {
         //Given
         //When + then
-        mvc.perform(get("/api/articles/search-hashtag"))
+        mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(model().attributeExists("articles/search-hashtag"));

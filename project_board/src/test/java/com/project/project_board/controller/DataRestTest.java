@@ -36,7 +36,7 @@ public class DataRestTest {
         //given
         //when
         //then
-        mvc.perform(get("/api/articles"))
+        mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.valueOf("text/html")))
                 .andDo(print());
